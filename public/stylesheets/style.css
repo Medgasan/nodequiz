@@ -18,11 +18,20 @@ body {
 	margin-bottom: 1px;
 	color: black;
 }
-/*
-#author {
-	width: 100%;
+
+#searcher {
+	
 }
-*/
+
+#quizList {
+	text-align: center;
+}
+
+#quizList table{
+	margin: 0 auto;
+	text-align: left;
+}
+
 section > div {
 	padding: 20px;
 }
