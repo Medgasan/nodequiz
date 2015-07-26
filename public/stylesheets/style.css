@@ -18,7 +18,11 @@ body {
 	margin-bottom: 1px;
 	color: black;
 }
-
+/*
+#author {
+	width: 100%;
+}
+*/
 section > div {
 	padding: 20px;
 }
@@ -33,12 +37,12 @@ footer {
 	text-align: center;
 }
 
-nav ul {
+ul {
 	list-style: none;
 	width: 100%;
 }
 
-nav li {
+li {
 	margin: 10px 0px 10px 0px;
 }
 
