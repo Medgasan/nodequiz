@@ -21,17 +21,22 @@ exports.index = function(req, res, next) {
 	var search = {};
 
 	if (req.query.search) {
-		search = {pregunta: {
-					like: "%" + req.query.search.replace(" ", '%') + "%"
-				}}
+		search = {
+			pregunta: {
+				like: "%" + req.query.search.replace(" ", '%') + "%"
+			}
+		}
 	};
 
 	var consulta = {
+		order: [
+			['pregunta','ASC']
+		],
 		where: search
 	};
 
 	models.Quiz.findAll(consulta).then(function(quizes){
-			res.render('quizes/index', {quizes: quizes});
+		res.render('quizes/index', {quizes: quizes});
 	});
 	
 };
