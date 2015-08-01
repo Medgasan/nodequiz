@@ -7,6 +7,11 @@ body {
 	font: 16px Georgia, serif;
 }
 
+#ErrorMsgs {
+	color: #f61;
+	font-size: smaler;
+}
+
 #page-wrap {
 	margin: 2% auto;
 	color: white;
@@ -55,3 +60,6 @@ li {
 	margin: 10px 0px 10px 0px;
 }
 
+.form-edit {
+	max-width: 50%;
+}

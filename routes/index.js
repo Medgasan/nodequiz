@@ -8,12 +8,12 @@ router.param('quizId', quizController.load);
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Quiz' });
+  res.render('index', { title: 'Quiz', errores:[] });
 });
 
 
 router.get('/author', function(req, res){
-	res.render('autor');
+	res.render('autor', {errores: []});
 });
 
 router.get('/quizes', quizController.index);
@@ -21,4 +21,7 @@ router.get('/quizes/:quizId(\\d+)', quizController.show); // quizController.show
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
 router.get('/quizes/new', quizController.new);
 router.post('/quizes/create', quizController.create);
+router.get('/quizes/:quizId(\\d+)/edit', quizController.edit);
+router.put('/quizes/:quizId(\\d+)', quizController.update);
+router.delete('/quizes/:quizId(\\d+)', quizController.destroy);
 module.exports = router;

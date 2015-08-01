@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var partials = require('express-partials');
 
 var routes = require('./routes/index');
+var methodoverride = require('method-override');
 
 var app = express();
 
@@ -22,8 +23,9 @@ app.use(partials());
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
+app.use(methodoverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
@@ -44,7 +46,8 @@ if (app.get('env') === 'development') {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
-            error: err
+            error: err,
+            errores:[]
         });
     });
 }
@@ -55,7 +58,8 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
-        error: {}
+        error: {},
+        errores:[]
     });
 });
 

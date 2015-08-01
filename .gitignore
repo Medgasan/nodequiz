@@ -4,3 +4,4 @@ quiz.sqlite
 Thumbs.db
 .env
 Procfile
+run.cmd

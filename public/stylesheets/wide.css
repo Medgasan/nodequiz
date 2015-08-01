@@ -22,13 +22,15 @@ header, footer {
 }
 
 
-nav span  {
-	margin: 0px 100px 0px 0px;
+nav li  {
+	/*margin: 0px 100px 0px 0px;*/
+	float: none;
+	width:100%;
 }
 
 
 section   {
-	width: 80%;
+	width: 85%;
 }
 
 
