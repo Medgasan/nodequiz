@@ -1,0 +1,35 @@
+<p class="h3">Lista de Quizes</p>
+
+<div id="searcher" class="form-group form-inline">
+	<form method="get" action="/quizes" class="form">
+		<input type = "text" name="search" placeholder="Buscar" class="form-control"/>
+		<input type="submit" value="Enviar" class="btn btn-default"/>
+		<input type="hidden" name="tema" value="<%= tema %>">
+	</form>
+</div>
+
+<div id="quizList">
+	<table class="table table-condensed table-striped">
+		<tr>
+			<td class="table-header">Pregunta</td>
+			<td>Tema</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<% var i; for (i=0; i < quizes.length; i++) { %>
+		<tr>
+			<td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
+			<td><a href="quizes?tema=<%= quizes[i].tema %>"><%= quizes[i].tema %></a></td>
+			<td><a href="quizes/<%= quizes[i].id %>/edit"><button class="pull-right btn btn-success">Editar</button></a></td>
+			<td class="form form-group form-inline">
+				<form method="post" action="/quizes/<%= quizes[i].id %>?_method=delete" class="form">
+				<button type="submit" onclick="return confirm('¿Quiere borrar la pregunta: <%= quizes[i].pregunta %>?')" class="form-control btn btn-danger">Borrar</button>
+				</form>
+				</td>
+		</tr>
+		<% } %>
+	</table>
+</div>
+<p>
+	<a href="/quizes/new"><button type="button" class="btn btn-warning">Crea una pregunta</button></a>
+</p>

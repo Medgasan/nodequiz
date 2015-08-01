@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"><title>Quiz</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link 	rel='stylesheet'
+    		    type ='text/css'
+    		    media='only screen and (min-width: 530px) and (min-device-width: 481px)'
+    		    href='/stylesheets/wide.css' />
+    <link 	rel='stylesheet'
+    		    type ='text/css'
+    		    media='only screen and (max-width: 480px)'
+    		    href='/stylesheets/smartphone.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+  <div id="page-wrap">
+  	<header class="main" id="h1" role="navigator">
+    </header>
+    <nav class="main" id="n1" role="navigation">
+      <ul class="nav nav-pills center-block">
+    	 <li class="active"><a href ="/"> Inicio </a> </li>
+    	 <li class="active"><a href ="/quizes"> Preguntas </a> </li>
+       <li class="active"><a href ="/author"> Autor </a> </li>
+      </ul>
+    </nav>
+
+    <section class="main" id="s1">
+      <% if (errores.length) { %>
+        <span id='ErrorMsg'>
+          Corregir errores:</br>
+          <% for (var i in errores) { %>
+            <span> <% errores[i].message %></span>
+          <% } %>
+        </span>
+      <% } %>      
+    	<%- body %>
+    </section>
+
+    <footer class="main" id="f1">
+      <div class="pull-right panel-body"><a href="http://es.wikipedia.org/wiki/Quiz">¿Que es un Quiz?</a></p></div>
+      <div class="pull-right panel-body"><a href="https://github.com/Medgasan/nodequiz" target="_blank">Proyecto en GitHub</a></p></div>
+	</footer>
+  <script type="text/javascript">
+  </script>
+</div>
+  </body>
+</html>
