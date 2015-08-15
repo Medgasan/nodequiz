@@ -19,7 +19,16 @@
   </head>
   <body>
   <div id="page-wrap">
-  	<header class="main" id="h1" role="navigator">
+  	<header class="main navbar" id="h1" role="navigator">
+      <% if (!session.user) { %>
+        <span class="pull-right nav">
+          <a class="btn btn-warning navbar-btn" role="button" href="/login"> login </a></span>
+      <% } else { %>
+        <form method="POST" action="\login?_method=delete" class="form form-inline pull-right">
+          <button class="btn btn-warning navbar-btn" type="submit"> logout </button>
+        </form>
+        <span class="pull-right navbar-text">Welcome <%= session.user.username %></span>
+      <% } %>
     </header>
     <nav class="main" id="n1" role="navigation">
       <ul class="nav nav-pills center-block">
@@ -32,7 +41,7 @@
     <section class="main" id="s1">
       <% if (errors.length) { %>
         <span id='ErrorMsg'>
-          Corregir errores:</br>
+          <!-- Corregir errores:</br>-->
           <% for (var i in errors) { %>
             <div class="alert alert-danger" role="alert">
               <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

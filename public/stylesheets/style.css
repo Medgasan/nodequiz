@@ -1,6 +1,6 @@
 * {
-	margin: 0;
-	padding: 0; 
+	margin: 0px;
+	padding: 0px; 
 }
 
 body {
@@ -13,7 +13,7 @@ body {
 }
 
 #page-wrap {
-	margin: 2% auto;
+	/*margin: 2% auto;*/
 	color: white;
 }
 
@@ -60,6 +60,6 @@ li {
 	margin: 10px 0px 10px 0px;
 }
 
-.form-edit {
+.with50 {
 	max-width: 50%;
 }

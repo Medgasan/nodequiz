@@ -4,11 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var partials = require('express-partials');
-
 var routes = require('./routes/index');
 var methodoverride = require('method-override');
+var session = require('express-session');
 
 var app = express();
 
@@ -27,6 +26,25 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(methodoverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session(
+    {
+        secret: 'supersecretsecret',
+        resave: false,
+        saveUninitialized: true
+    }
+));
+
+
+app.use(function(req, res, next){
+    console.log('-------------------------------------------');
+    if(!req.path.match(/\/login/)) {
+        console.log('----------- req.path NOT match !! --->' + req.path.toString());
+        req.session.redir = req.path;
+    }
+
+    res.locals.session = req.session;
+    next();
+});
 
 app.use('/', routes);
 
