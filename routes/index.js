@@ -5,7 +5,9 @@ var quizController = require('../controllers/quiz_controller');
 var commentController = require('../controllers/comment_controller');
 var sessionController = require('../controllers/session_controller');
 
+// AutoLoads
 router.param('quizId', quizController.load);
+router.param('commentId', commentController.load);
 
 // Rutas principales 
 router.get('/', function(req, res) {
@@ -32,6 +34,7 @@ router.delete('/quizes/:quizId(\\d+)', quizController.destroy);
 // Rutas Comentarios
 router.get('/quizes/:quizId(\\d+)/comments/new', commentController.new);
 router.post('/quizes/:quizId(\\d+)/comments', commentController.create);
+router.post('/quizes/:quizId(\\d+)/comments/:commentId(\\d+)/publish', commentController.publish);
 
 
 // Rutas Login

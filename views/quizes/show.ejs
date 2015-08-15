@@ -12,6 +12,12 @@
 
 <p><strong>Comentarios</strong></p>
 <%for(index in quiz.Comments){ %>
-	<p>- <%=quiz.Comments[index].texto%></p>
+	<% if (quiz.Comments[index].publicado || session.user) { %>
+		<form method="POST" action="/quizes/<%= quiz.id %>/comments/<%= quiz.Comments[index].id %>/publish" class="form-inline">
+			<span>- <%=quiz.Comments[index].texto%></span>
+			<% if (session.user && !quiz.Comments[index].publicado) { %>
+				<button class="btn btn-default" type="submit"> Publicar </button></a>
+			<% } %>
+		</form>
+	<% } %>
 <%}%>
-

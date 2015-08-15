@@ -36,9 +36,7 @@ app.use(session(
 
 
 app.use(function(req, res, next){
-    console.log('-------------------------------------------');
     if(!req.path.match(/\/login/)) {
-        console.log('----------- req.path NOT match !! --->' + req.path.toString());
         req.session.redir = req.path;
     }
 

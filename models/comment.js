@@ -11,6 +11,10 @@ module.exports = function(sequelize, DataTypes) {
 						msg : "-> Introduce tu comentario"
 					}
 				}
+			},
+			publicado: {
+				type: DataTypes.BOOLEAN,
+				defaultValue: false
 			}
 		}
 	);
