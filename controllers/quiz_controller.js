@@ -42,7 +42,7 @@ exports.index = function(req, res, next) {
 		where: search
 	};
 	models.Quiz.findAll(consulta).then(function(quizes){
-		res.render('quizes/index', {quizes: quizes, tema: req.query.tema , errores:[]});
+		res.render('quizes/index', {quizes: quizes, tema: req.query.tema , errors:[]});
 	});
 };
 
@@ -51,7 +51,7 @@ exports.new = function(req, res) {
 	var quiz = models.Quiz.build(
 			{pregunta:"pregunta", respuesta:"respuesta", tema:"otro"}
 		);
-	res.render('quizes/new', {quiz:quiz, errores:[]});
+	res.render('quizes/new', {quiz:quiz, errors:[]});
 };
 
 
@@ -60,7 +60,7 @@ exports.create = function(req, res){
 	quiz
 	.validate().then(function(err){
 		if (err) {
-			res.render('quizes/new', {quiz: quiz, errores: err.errors});
+			res.render('quizes/new', {quiz: quiz, errors: err.errors});
 		} else {
 			quiz
 			.save({fields: ["pregunta","respuesta","tema"]})
@@ -71,7 +71,7 @@ exports.create = function(req, res){
 };
 
 exports.show = function(req,res) {
-	res.render('quizes/show', {quiz: req.quiz, errores:[]});	
+	res.render('quizes/show', {quiz: req.quiz, errors:[]});	
 };
 
 
@@ -80,25 +80,27 @@ exports.answer = function(req,res) {
 	if (req.query.respuesta === req.quiz.respuesta) {
 		resultado = 'Correcto';
 	};
-	res.render('quizes/answer', {respuesta: resultado, quiz: req.quiz, errores:[]});
+	res.render('quizes/answer', {respuesta: resultado, quiz: req.quiz, errors:[]});
 };
 
 
 exports.edit = function(req, res) {
 	var quiz = req.quiz;
-	res.render('quizes/edit',{quiz: quiz, errores:[]});
+	res.render('quizes/edit',{quiz: quiz, errors:[]});
 };
 
 
 exports.update = function(req, res) {
 	req.quiz.pregunta = req.body.quiz.pregunta;
-	req.quiz.respueta = req.body.quiz.respueta;
+	req.quiz.respuesta = req.body.quiz.respuesta;
 	req.quiz.tema = req.body.quiz.tema;
+
+
 
 	req.quiz.validate()
 	.then(function(err){
 		if (err) {
-			res.render('quizes/edit', {quiz: req.quiz, errors: err. errors});
+			res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
 		} else {
 			req.quiz
 			.save({fields:["pregunta","respuesta","tema"]})

@@ -7,14 +7,14 @@ exports.new = function(req, res) {
 
 // POST /quizes/:quizId/comments
 exports.create = function(req, res){
-	var comment = models.Comments.build(
+	var comment = models.Comment.build(
 		{ 	
-			texto: req.body.comment.exto,
-			quizId: req.params.quizId
+			texto: req.body.comment.texto,
+			QuizId: req.params.quizId
 		}
 	);
 
-	comments
+	comment
 	.validate()
 	.then(
 		function(err){

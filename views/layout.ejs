@@ -30,12 +30,16 @@
     </nav>
 
     <section class="main" id="s1">
-      <% if (errores.length) { %>
+      <% if (errors.length) { %>
         <span id='ErrorMsg'>
           Corregir errores:</br>
-          <% for (var i in errores) { %>
-            <span> <% errores[i].message %></span>
-          <% } %>
+          <% for (var i in errors) { %>
+            <div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              <span> <%= errors[i].message %></span>
+            </div>          
+         <% } %>
         </span>
       <% } %>      
     	<%- body %>

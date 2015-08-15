@@ -4,15 +4,15 @@ module.exports = function (secuelize, DataTypes) {
 	return secuelize.define('Quiz', 
 	{	pregunta: {
 			type: DataTypes.STRING,
-			validate: {notEmpty: {msg: "-> falta pregunta"}}
+			validate: {notEmpty: {msg: "Falta pregunta"}}
 		},
 		respuesta: {
 			type: DataTypes.STRING,
-			validate: {notEmpty: {msg: "-> falta respuesta"}}
+			validate: {notEmpty: {msg: "Falta respuesta"}}
 		},
 		tema: {
 			type: DataTypes.STRING,
-			validate: {notEmpty: {msg: "-> falta tema"}}
+			validate: {notEmpty: {msg: "Falta tema"}}
 		},
 
 	});
