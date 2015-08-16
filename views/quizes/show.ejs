@@ -8,7 +8,7 @@
 	</div>
 </form>
 
-<p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p>
+<p><a href="/quizes/<%= quiz.id %>/comments/new"><button class="btn btn-default"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Nuevo comentario </button></a></p>
 
 <p><strong>Comentarios</strong></p>
 <%for(index in quiz.Comments){ %>
@@ -16,7 +16,7 @@
 		<form method="POST" action="/quizes/<%= quiz.id %>/comments/<%= quiz.Comments[index].id %>/publish" class="form-inline">
 			<span>- <%=quiz.Comments[index].texto%></span>
 			<% if (session.user && !quiz.Comments[index].publicado) { %>
-				<button class="btn btn-default" type="submit"> Publicar </button></a>
+				<button class="btn btn-default" type="submit"> Publicar <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></a>
 			<% } %>
 		</form>
 	<% } %>

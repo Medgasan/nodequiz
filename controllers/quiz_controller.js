@@ -20,6 +20,11 @@ exports.load = function(req, res, next, quizId) {
 
 
 exports.index = function(req, res, next) {
+
+	if (!req.query.tema || req.query.tema === "undefined"){
+		req.query.tema="";
+	}
+
 	var search = {};
 	if (req.query.search) {
 		search = {

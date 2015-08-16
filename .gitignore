@@ -5,3 +5,4 @@ Thumbs.db
 .env
 Procfile
 run.cmd
+makecerts.cmd

@@ -1,4 +1,3 @@
-
 // GET /login -- formulario de login
 exports.new = function(req, res) {
 	var errors = req.session.errors || [];

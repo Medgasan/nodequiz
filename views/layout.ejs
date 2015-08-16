@@ -22,19 +22,29 @@
   	<header class="main navbar" id="h1" role="navigator">
       <% if (!session.user) { %>
         <span class="pull-right nav">
-          <a class="btn btn-warning navbar-btn" role="button" href="/login"> login </a></span>
+          <a class="btn btn-warning navbar-btn" role="button" href="/login">
+            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+           login </a></span>
       <% } else { %>
         <form method="POST" action="\login?_method=delete" class="form form-inline pull-right">
-          <button class="btn btn-warning navbar-btn" type="submit"> logout </button>
+          <button class="btn btn-warning navbar-btn" type="submit">
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+           logout </button>
         </form>
         <span class="pull-right navbar-text">Welcome <%= session.user.username %></span>
       <% } %>
     </header>
     <nav class="main" id="n1" role="navigation">
       <ul class="nav nav-pills center-block">
-    	 <li class="active"><a href ="/"> Inicio </a> </li>
-    	 <li class="active"><a href ="/quizes"> Preguntas </a> </li>
-       <li class="active"><a href ="/author"> Autor </a> </li>
+    	 <li class="active"><a href ="/">
+        <span class="glyphicon glyphicon-home pull-left" aria-hidden="true"></span>
+        Inicio </a> </li>
+    	 <li class="active"><a href ="/quizes">
+        <span class="glyphicon glyphicon-question-sign pull-left" aria-hidden="true"></span>
+        Preguntas </a> </li>
+       <li class="active"><a href ="/author">
+        <span class="glyphicon glyphicon-user pull-left" aria-hidden="true"></span>
+        Autor </a> </li>
       </ul>
     </nav>
 

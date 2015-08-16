@@ -34,10 +34,29 @@ app.use(session(
     }
 ));
 
-
+// MW helpers
 app.use(function(req, res, next){
+
     if(!req.path.match(/\/login/)) {
         req.session.redir = req.path;
+    }
+
+    if (req.session.user) {
+        var time = new Date().getTime();
+        req.session.lastReq = req.session.lastReq || time;
+        var sessionExpired = (time - req.session.lastReq) > 120000;
+        console.log(time +" ----- "+ sessionExpired +" ----- "+ req.session.lastReq);
+
+        if (sessionExpired){
+            console.log("------------- session expirada ----------------");
+            delete req.session.user;
+            delete req.session.lastReq;
+            req.session.errors = [{"message": "La sesion a caducado. Ingrese de nuevo sus credenciales"}];
+            res.redirect('login');
+            return;
+        } else {
+            req.session.lastReq = time;
+        };
     }
 
     res.locals.session = req.session;
